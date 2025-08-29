@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For My Love Vanshu ❤️</title>
+  <style>
+    :root{--bg1:#ff9a9e;--bg2:#fad0c4;--accent:#ff4d6d}
+    *{box-sizing:border-box}
+    body{
+      margin:0;min-height:100vh;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:#111;display:flex;align-items:center;justify-content:center;padding:20px;
+    }
+    .card{
+      max-width:720px;width:100%;background:rgba(255,255,255,0.12);
+      border-radius:18px;backdrop-filter:blur(6px);
+      padding:28px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.12);
+    }
+    h1{margin:0;font-size:2.2rem;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,0.25)}
+    p.lead{color:#fff;margin:12px 0;font-size:1.05rem}
+    .sm{font-size:.95rem;opacity:.95;color:#fff}
+    .btn{display:inline-block;margin-top:14px;padding:10px 18px;border-radius:999px;background:#fff;color:var(--accent);text-decoration:none;font-weight:600}
+    .heart{position:fixed;pointer-events:none;font-size:22px;animation:float 5s linear infinite}
+    @keyframes float {
+      0%{transform:translateY(110vh) scale(.6);opacity:0}
+      10%{opacity:1}
+      100%{transform:translateY(-20vh) scale(1);opacity:0}
+    }
+    @media (max-width:420px){h1{font-size:1.6rem}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hey Vanshu ❤️</h1>
+    <p class="lead"><strong>Mohit</strong> ne yeh page specially tumhare liye banaya — bas tumhari smile chahiye 😊</p>
+    <p class="sm">Tum bahut khaas ho. Agar mood kharab hai to ek deep breath lo, aur yeh page scroll karte raho 💕</p>
+    <a class="btn" href="#" onclick="toggleHearts();return false">Click for more ❤️</a>
+  </div>
+
+  <script>
+    let timer = null;
+    function makeHeart(){
+      const d = document.createElement('div');
+      d.className = 'heart';
+      d.style.left = (Math.random()*90)+'vw';
+      d.style.fontSize = (14 + Math.random()*28) + 'px';
+      d.style.animationDuration = (3 + Math.random()*3)+'s';
+      d.innerText = ['💖','❤️','😍','🥰'][Math.floor(Math.random()*4)];
+      document.body.appendChild(d);
+      setTimeout(()=>d.remove(),7000);
+    }
+    function toggleHearts(){
+      if(timer){ clearInterval(timer); timer = null; return; }
+      makeHeart(); timer = setInterval(makeHeart, 350);
+    }
+    // small auto burst once when page opens
+    for(let i=0;i<8;i++){ setTimeout(makeHeart, i*180) }
+  </script>
+</body>
+</html>
